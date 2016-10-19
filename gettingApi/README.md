@@ -1,1 +1,1 @@
-App for searching Github repositories
+App for searching Github users and repositories
