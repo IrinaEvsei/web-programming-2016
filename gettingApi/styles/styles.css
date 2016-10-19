@@ -24,6 +24,7 @@ body{
 
 .form-control{
 	font-size: 15px !important;
+	height: 40px;
 }
 
 .btn{
@@ -69,6 +70,12 @@ body{
 	padding: 50px 0;
 }
 
+.refresh{
+	text-align: center;
+	color: #E0E0E0;
+	font-size: 18px;
+}
+
 .loading{
     border: 6px solid #f3f3f3;
     border-top: 6px solid #3498db;
@@ -82,4 +89,39 @@ body{
 @keyframes spin{
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.owner-link img{
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.owner-link img:hover{
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2);
+}
+
+.owner-link p{
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.owner-link p:hover{
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2);
+}
+
+.search-input{
+	margin: 0 auto !important;
+}
+
+.submit-button{
+	text-align: center;
+}
+
+.search-text{
+	text-align: center;
+	font-size: 16px;
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif !important;
+	color: #3F3F3F;
 }
