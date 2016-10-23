@@ -1,8 +1,11 @@
 'use strict';
 
 $(document).ready(function(){
+	var timer;
 	$(".loading").hide();
 	$("#repo-search-action").on('submit', function(event){
+		stopTimer();
+
 		event.preventDefault();
 		$(".pre-loading").hide();
 		$(".loading").show();
@@ -16,7 +19,7 @@ $(document).ready(function(){
 		}
 
 		repoSearch(language, repository);
-		var timer = setTimeout(function run(){
+		timer = setTimeout(function run(){
 			$(".loaded-info").remove();
 			addNewDiv();
 			repoSearch(language, repository);
@@ -25,6 +28,8 @@ $(document).ready(function(){
 	});
 
 	$("#user-search-action").on('submit', function(event){
+		stopTimer();
+
 		event.preventDefault();
 		$(".pre-loading").hide();
 		$(".loading").show();
@@ -34,6 +39,13 @@ $(document).ready(function(){
 		var userName = $("#search-user").val();
 		userSearch(userName);
 	});
+
+	function stopTimer(){
+		if(timer){
+			clearTimeout(timer);
+			timer = null;
+		}
+	}
 });
 
 function addNewDiv(){
