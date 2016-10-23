@@ -2,12 +2,12 @@
 
 $(document).ready(function(){
 	$(".loading").hide();
-
 	$("#repo-search-action").on('submit', function(event){
 		event.preventDefault();
 		$(".pre-loading").hide();
 		$(".loading").show();
-		$(".repos-entry").empty();
+		$(".loaded-info").remove();
+		addNewDiv();
 
 		var repository = $("#search-keyword").val();
 		var language   = $("#search-language").val();
@@ -17,21 +17,33 @@ $(document).ready(function(){
 
 		repoSearch(language, repository);
 		var timer = setTimeout(function run(){
+			$(".loaded-info").remove();
+			addNewDiv();
 			repoSearch(language, repository);
-			timer = setTimeout(run, 10000);
-		}, 10000);
+			timer = setTimeout(run, 30000);
+		}, 30000);
 	});
 
 	$("#user-search-action").on('submit', function(event){
 		event.preventDefault();
 		$(".pre-loading").hide();
 		$(".loading").show();
-		$(".users-entry").empty();
+		$(".loaded-info").remove();
+		addNewDiv();
 
 		var userName = $("#search-user").val();
 		userSearch(userName);
 	});
 });
+
+function addNewDiv(){
+    var newDiv = document.createElement("div");
+    	newDiv.className = "container-fluid loaded-info";
+        newDiv.innerHTML = "";
+
+    var beforeDiv = document.getElementById("loading");
+    document.body.insertBefore(newDiv, beforeDiv);
+}
 
 function repoSearch(language, repository){
 	var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
